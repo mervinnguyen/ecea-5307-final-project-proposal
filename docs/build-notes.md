@@ -78,11 +78,11 @@ The resulting Buildroot configuration is stored in
 
 - Build outcome: **Success**; Buildroot completed with the health-monitor
   external package enabled and generated the Raspberry Pi 5 image outputs.
-- Image: `images/sdcard.img` — about 153 MiB.
+- Image: `images/sdcard.img` — 159,384,064 bytes (about 153 MiB).
 - The Sprint 2 image rebuild completed at 2026-10-17 04:27 UTC.
-- Reapplying the checked-in configuration and rerunning the documented
-  Buildroot command completed successfully on 2026-10-17 during Sprint 3.
-  This incremental verification reused the existing output directory.
+- The documented incremental Buildroot command completed successfully again
+  at 2026-10-17 06:26 UTC, reusing the existing output directory and
+  regenerating `sdcard.img` with the checked-in monitor package.
 - A separate build from a new output directory was attempted and later
   stopped during kernel compilation without producing an image. No clean-build
   pass is claimed. The successful incremental image build above remains the
