@@ -83,9 +83,10 @@ The resulting Buildroot configuration is stored in
 - Reapplying the checked-in configuration and rerunning the documented
   Buildroot command completed successfully on 2026-10-17 during Sprint 3.
   This incremental verification reused the existing output directory.
-- A separate build from a new output directory was interrupted during host
-  dependency compilation. It is being resumed in
-  `/workspaces/buildroot-output-clean`; no clean-build pass is claimed yet.
+- A separate build from a new output directory was attempted and later
+  stopped during kernel compilation without producing an image. No clean-build
+  pass is claimed. The successful incremental image build above remains the
+  verified image-generation result.
 - The generated image remains in `/workspaces/buildroot-output/images/` and is
   not committed to the repository.
 
