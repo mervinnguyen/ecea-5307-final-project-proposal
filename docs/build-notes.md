@@ -103,8 +103,8 @@ tests are pending access to the Raspberry Pi 5B.
 ## Flashing and boot test
 
 **Pending:** The image has not yet been written to an SD card or booted on
-the Raspberry Pi 5B because the hardware is not currently available. Sprint 1
-issue #1 remains open until target boot and version details are recorded.
+the Raspberry Pi 5B because the hardware is not currently available. Target
+boot and version details are tracked in Sprint 1 follow-up issue #6.
 
 Before flashing, confirm the target device name. Writing an image erases the
 selected device.
