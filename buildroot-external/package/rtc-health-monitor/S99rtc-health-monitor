@@ -1,0 +1,33 @@
+#!/bin/sh
+
+DAEMON=/usr/bin/rtc-health-monitor
+PIDFILE=/var/run/rtc-health-monitor.pid
+
+case "$1" in
+	start)
+		printf 'Starting RTC health monitor: '
+		if start-stop-daemon -S -b -m -p "$PIDFILE" \
+			--exec "$DAEMON" -- --interval 60 --log /data/health.log; then
+			echo "OK"
+		else
+			echo "FAILED"
+			exit 1
+		fi
+		;;
+	stop)
+		printf 'Stopping RTC health monitor: '
+		if start-stop-daemon -K -p "$PIDFILE"; then
+			echo "OK"
+		else
+			echo "FAILED"
+			exit 1
+		fi
+		;;
+	restart|reload)
+		"$0" stop && "$0" start
+		;;
+	*)
+		echo "Usage: $0 {start|stop|restart}"
+		exit 1
+		;;
+esac

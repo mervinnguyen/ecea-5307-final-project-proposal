@@ -1,0 +1,5 @@
+menu "RTC Monitoring Appliance"
+
+source "$BR2_EXTERNAL_RTC_MONITORING_PATH/package/rtc-health-monitor/Config.in"
+
+endmenu

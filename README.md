@@ -6,3 +6,5 @@ Build configuration and the successful Buildroot build record are in
 [`config/buildroot.config`](config/buildroot.config) and
 [`docs/build-notes.md`](docs/build-notes.md). The generated image is not
 committed; see the build notes for the image location and target-test status.
+The C health monitor, Buildroot package, and BusyBox startup integration are
+in [`buildroot-external/`](buildroot-external/).
