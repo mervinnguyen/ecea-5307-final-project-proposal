@@ -66,12 +66,14 @@ The resulting Buildroot configuration is stored in
 
 ## Flashing and boot test
 
-_TODO — complete once the image is written to an SD card and booted._
+**Pending:** The image has not yet been written to an SD card or booted on
+the Raspberry Pi 5B because the hardware is not currently available. Sprint 1
+issue #1 remains open until target boot and version details are recorded.
 
 Before flashing, confirm the target device name. Writing an image erases the
 selected device.
 
-- Flash method: _TODO_
-- Boot result: _TODO_
-- Kernel version (`uname -a`): _TODO_
-- Userspace/Buildroot version (`cat /etc/os-release`): _TODO_
+- Flash method: Pending
+- Boot result: Pending
+- Kernel version (`uname -a`): Pending
+- Userspace/Buildroot version (`cat /etc/os-release`): Pending
