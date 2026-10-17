@@ -83,10 +83,10 @@ The resulting Buildroot configuration is stored in
 - The documented incremental Buildroot command completed successfully again
   at 2026-10-17 06:26 UTC, reusing the existing output directory and
   regenerating `sdcard.img` with the checked-in monitor package.
-- A separate build from a new output directory was attempted and later
-  stopped during kernel compilation without producing an image. No clean-build
-  pass is claimed. The successful incremental image build above remains the
-  verified image-generation result.
+- A separate build from a new output directory was interrupted during kernel
+  compilation, then resumed in `/workspaces/buildroot-output-clean`. It is
+  running now; no clean-build pass is claimed until it produces and verifies
+  an image. The successful incremental image build above remains verified.
 - The generated image remains in `/workspaces/buildroot-output/images/` and is
   not committed to the repository.
 
