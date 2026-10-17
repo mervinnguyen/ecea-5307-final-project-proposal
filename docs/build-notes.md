@@ -82,10 +82,10 @@ The resulting Buildroot configuration is stored in
 - The Sprint 2 image rebuild completed at 2026-10-17 04:27 UTC.
 - Reapplying the checked-in configuration and rerunning the documented
   Buildroot command completed successfully on 2026-10-17 during Sprint 3.
-  This incremental verification reused the existing output directory. A
-  separate build from a newly empty output directory is now in progress at
-  `/workspaces/buildroot-output-clean`; its result will be recorded after it
-  completes.
+  This incremental verification reused the existing output directory.
+- A separate build from a new output directory was interrupted during host
+  dependency compilation. It is being resumed in
+  `/workspaces/buildroot-output-clean`; no clean-build pass is claimed yet.
 - The generated image remains in `/workspaces/buildroot-output/images/` and is
   not committed to the repository.
 
