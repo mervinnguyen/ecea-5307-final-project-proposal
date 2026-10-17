@@ -49,6 +49,17 @@ The checked-in configuration records the external tree at
 out elsewhere, update `BR2_EXTERNAL` and regenerate the configuration with
 `olddefconfig`.
 
+For an empty-output-directory reproducibility check, use a new output path:
+
+```bash
+mkdir /workspaces/buildroot-output-clean
+cp config/buildroot.config /workspaces/buildroot-output-clean/.config
+make -C /workspaces/buildroot O=/workspaces/buildroot-output-clean \
+  BR2_EXTERNAL=/workspaces/final-project/buildroot-external olddefconfig
+make -C /workspaces/buildroot O=/workspaces/buildroot-output-clean \
+  BR2_EXTERNAL=/workspaces/final-project/buildroot-external
+```
+
 The full build takes a long time on 2 CPUs. To keep it running if the terminal
 disconnects, run it detached with a log file:
 
@@ -68,7 +79,13 @@ The resulting Buildroot configuration is stored in
 - Build outcome: **Success**; Buildroot completed with the health-monitor
   external package enabled and generated the Raspberry Pi 5 image outputs.
 - Image: `images/sdcard.img` — about 153 MiB.
-- The incremental Sprint 2 rebuild completed at 2026-10-17 04:24 UTC.
+- The Sprint 2 image rebuild completed at 2026-10-17 04:27 UTC.
+- Reapplying the checked-in configuration and rerunning the documented
+  Buildroot command completed successfully on 2026-10-17 during Sprint 3.
+  This incremental verification reused the existing output directory. A
+  separate build from a newly empty output directory is now in progress at
+  `/workspaces/buildroot-output-clean`; its result will be recorded after it
+  completes.
 - The generated image remains in `/workspaces/buildroot-output/images/` and is
   not committed to the repository.
 
@@ -100,6 +117,34 @@ interval was rejected. The target binary and init script are present in the
 Buildroot target tree. Pi boot, hardware RTC reading, and reboot-persistence
 tests are pending access to the Raspberry Pi 5B.
 
+## Target validation procedure
+
+Run these commands on the Pi after booting the image:
+
+```sh
+uname -a
+cat /etc/os-release
+ls -l /dev/rtc0
+hwclock -r
+ps | grep '[r]tc-health-monitor'
+tail -n 5 /data/health.log
+```
+
+For a persistent-log check, record the existing line count, reboot the Pi,
+then confirm earlier lines remain and new records appear:
+
+```sh
+wc -l /data/health.log
+reboot
+# after reconnecting
+tail -n 5 /data/health.log
+```
+
+For RTC software-reboot validation, set the RTC while the Pi is powered and
+network time is disabled, reboot without removing power, then compare
+`date -u` with `hwclock -r`. Do not treat a full power-off as an RTC-retention
+test: no backup battery is installed.
+
 ## Flashing and boot test
 
 **Pending:** The image has not yet been written to an SD card or booted on
@@ -113,3 +158,7 @@ selected device.
 - Boot result: Pending
 - Kernel version (`uname -a`): Pending
 - Userspace/Buildroot version (`cat /etc/os-release`): Pending
+
+Sprint 3 status: target validation is blocked until the Raspberry Pi 5B and
+microSD card are available. A fresh-output-directory build and the final
+target test evidence also remain open; see issues #7 and #8.
