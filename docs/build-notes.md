@@ -83,10 +83,14 @@ The resulting Buildroot configuration is stored in
 - The documented incremental Buildroot command completed successfully again
   at 2026-10-17 06:26 UTC, reusing the existing output directory and
   regenerating `sdcard.img` with the checked-in monitor package.
-- A separate build from a new output directory was interrupted during kernel
-  compilation, then resumed in `/workspaces/buildroot-output-clean`. It is
-  running now; no clean-build pass is claimed until it produces and verifies
-  an image. The successful incremental image build above remains verified.
+- A separate build from a new output directory completed successfully at
+  2026-10-17 15:49 UTC in `/workspaces/buildroot-output-clean`. It generated
+  `images/sdcard.img` (159,384,064 bytes) and included the AArch64 monitor and
+  init script. This confirms the checked-in configuration and external package
+  build from a fresh output directory.
+- Buildroot's generated `.config` differs from the checked-in configuration
+  only in `BR2_EXTERNAL_RTC_MONITORING_VERSION`, which records the external
+  tree Git revision at build time.
 - The generated image remains in `/workspaces/buildroot-output/images/` and is
   not committed to the repository.
 
